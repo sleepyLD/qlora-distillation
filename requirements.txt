@@ -1,0 +1,18 @@
+# Direct dependencies only; not an exact historical environment lock.
+# Install CUDA-compatible torch separately for your GPU and driver.
+torch
+transformers
+peft
+trl
+bitsandbytes
+accelerate
+datasets
+pandas
+scikit-learn
+matplotlib
+openai
+ollama
+jupyterlab
+ipykernel
+# Optional USE_NLI baseline: install summac separately.
+# GGUF converter dependencies are installed by notebook 04 from llama.cpp.

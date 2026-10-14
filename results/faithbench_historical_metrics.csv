@@ -1,0 +1,6 @@
+﻿detector,n,accuracy,balanced_accuracy,recall_halluc,precision,specificity,tp,fp,tn,fn,gray_n,gray_flagged,n_failed
+yours_gpt4o_detect,750,0.583,0.6,0.499,0.702,0.701,219,93,218,220,136,36,0
+ollama_judge[qwen3:4b],750,0.529,0.584,0.264,0.795,0.904,116,30,281,323,136,14,0
+student_qwen3-4b-qlora,750,0.557,0.568,0.503,0.66,0.633,221,114,197,218,136,46,0
+naive_numcheck,750,0.491,0.55,0.203,0.736,0.897,89,32,279,350,136,13,0
+naive_overlap,750,0.427,0.497,0.087,0.567,0.907,38,29,282,401,136,14,0

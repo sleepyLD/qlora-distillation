@@ -1,0 +1,22 @@
+[
+  {
+    "source": "論文深化_實驗1_偵測比較.ipynb",
+    "published": "00_faithbench_baselines.ipynb"
+  },
+  {
+    "source": "distill_phase1_make_data.ipynb",
+    "published": "01_generate_teacher_data.ipynb"
+  },
+  {
+    "source": "distill_phase2_train.ipynb",
+    "published": "02_train_qlora.ipynb"
+  },
+  {
+    "source": "distill_phase3_inference_eval.ipynb",
+    "published": "03_evaluate_student.ipynb"
+  },
+  {
+    "source": "distill_phase4_gguf_deploy.ipynb",
+    "published": "04_deploy_gguf_ollama.ipynb"
+  }
+]
