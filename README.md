@@ -19,8 +19,8 @@ CNNDM文章 → 本機LLM生成摘要 → GPT-4o教師標註
 ```
 
 - 摘要生成器：Ollama `qwen3:4b`、`llama3.2:3b`。
-- 標註教師：GPT-4o，中性／Benign-aware prompt；不是兩個本機模型標註。
-- 訓練資料：2,000筆教師標籤資料；按完全相同source字串計為959篇不同來源。它不是2,000篇獨立文章。
+- 標註教師：GPT-4o，中性／Benign-aware prompt。
+- 訓練資料：2,000筆教師標籤資料；按完全相同source字串計為959篇不同來源。
 - 學生：`Qwen/Qwen3-4B-Instruct-2507`。
 - 外部評估：[FaithBench](https://github.com/vectara/FaithBench)，歷史執行750筆。此repo以含Unwanted標註為正例，其餘為負例，gray另計；這是本實驗的二元政策，不代表所有可能政策。
 - 本repo不包含CNNDM原文、教師產生的完整資料、FaithBench副本或模型權重。使用者須從原始來源取得資料並遵守各自授權與使用條件。
@@ -78,14 +78,12 @@ CNNDM文章 → 本機LLM生成摘要 → GPT-4o教師標註
 
 ## 限制與下一版
 
-目前按列切85/15，同文章的不同摘要可能跨集合；內部驗證不可叫作獨立test。教師標籤未充分人工稽核，輸出解析有無效答案默認負例問題，長輸入截斷仍須檢查。詳見 [limitations](docs/limitations.md)。
+目前按列切85/15，同文章的不同摘要可能跨集合；教師標籤未充分人工稽核，輸出解析有無效答案默認負例問題，長輸入截斷仍須檢查。詳見 [limitations](docs/limitations.md)。
 
 **Next：測試QLoRA微調參數對蒸餾模型的影響。** 執行前先完成文章群組切分、同HF模型同後端的未微調對照、mask與輸出解析檢查。之後固定資料、prompt與評估方式，比較LR（5e-5／1e-4／2e-4）、rank（8／16／32，維持alpha/r=2）與作用層（q/v、attention、attention+MLP）。報BA、recall、specificity、訓練時間、峰值VRAM與adapter大小；候選設定做多seed，不預設一定改善。
 
 ## 版本與發布範圍
 
 版本歷程見 [CHANGELOG](CHANGELOG.md)，發布檔案取捨見 [publication scope](docs/publication_scope.md)。未附LICENSE：程式再利用授權待作者決定；模型、資料及第三方工具遵循各自授權。
-
-本次驗證：notebook JSON與Python語法、輸出清除、敏感字串與私人路徑掃描；未執行付費API、GPU重訓或Ollama部署，不宣稱乾淨環境已完整重現。
 
 技術參考：[QLoRA論文](https://arxiv.org/abs/2305.14314)、[PEFT](https://github.com/huggingface/peft)、[TRL](https://github.com/huggingface/trl)、[llama.cpp](https://github.com/ggml-org/llama.cpp)。
